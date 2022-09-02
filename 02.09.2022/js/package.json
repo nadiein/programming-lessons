@@ -1,0 +1,15 @@
+{
+  "name": "programming-lesson",
+  "version": "1.0.0",
+  "description": "Programming Lesson 02.09.22",
+  "repository": "https://github.com/nadiein/programming-lessons",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "nadiein",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.0.1"
+  }
+}
