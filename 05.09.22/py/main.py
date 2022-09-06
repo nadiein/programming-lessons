@@ -35,7 +35,7 @@ def transmission(list:list, tr:int) -> list:
             if list[i][j] <= tr:
                 list[i][j] = 0
             else:
-                list[i][j] = list[i][j] - tr
+                list[i][j] = list[i][j] ^ tr
     return list
 
 
@@ -61,7 +61,7 @@ if __name__ == '__main__':
 
     res_1 = get_result(8, 5, 1, 100)
     res_2 = get_result(8, 8, 0, 100007)
-    res_3 = get_result(5, 45, 3, 100007)
+    res_3 = get_result(5, 45, 3, 1000007)
 
     end = datetime.now()
     print('performance => ', end - start)
