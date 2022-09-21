@@ -17,4 +17,11 @@ class WrongType(Exception):
     pass
 
 def findClosestPairs(points):
+    if isinstance(points) is not tuple:
+        raise WrongType
+
+    for index, point in enumerate(points):
+        curr_el = point
+        if index < len(points) - 1:
+            next_el = points[index + 1]
     pass
