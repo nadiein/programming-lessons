@@ -16,12 +16,28 @@
 class WrongType(Exception):
     pass
 
+# TODO:// refactor algorithm, it\'s too slow. Should be  O(n log n)
 def findClosestPairs(points):
     if isinstance(points) is not tuple:
         raise WrongType
 
+    l = list()
+    count = 1
     for index, point in enumerate(points):
-        curr_el = point
-        if index < len(points) - 1:
-            next_el = points[index + 1]
-    pass
+        for sub_index, sub_point in enumerate(points[count:], start=count):
+            distance = math.sqrt(math.pow(sub_point[0] - point[0], 2) + math.pow(sub_point[1] - point[1], 2))
+            if distance == 0.0:
+                return (point, sub_point)
+            else:
+                d = {
+                    'index': index,
+                    'sub_index': sub_index,
+                    'dis': distance
+                }
+                l.append(d)
+        if count >= len(points):
+            count = 1
+        count = count + 1
+    x = min(l, key=lambda x:x['dis'])['index']
+    y = min(l, key=lambda x:x['dis'])['sub_index']
+    return (points[x], points[y])
