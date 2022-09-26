@@ -13,11 +13,11 @@
 //   9                   . G
 
 
-const findClosestDistance = (x1, y1, x2, y2) => {
+export const findClosestDistance = (x1, y1, x2, y2) => {
     return parseFloat(Math.sqrt( (x2 - x1)**2 + (y2 - y1)**2 ).toFixed(1))
 }
 
-const findClosestPair = (points) => {
+export const findClosestPair = (points) => {
 
     const res = []
 
@@ -40,10 +40,10 @@ const findClosestPair = (points) => {
     const minVal = Math.min(...res.map(item => item['distance']));
     const index = res.map(item => item['distance']).indexOf(minVal);
 
-    const point_index = res[index]['index'] || 0;
-    const point_sub_index = res[index]['sub_index'] || 0;
+    const pointIndex = res[index]['index'];
+    const pointSubIndex = res[index]['sub_index'];
 
-    return [points[point_index], points[point_sub_index]];
+    return [points[pointIndex], points[pointSubIndex]];
 }
 
 const points = [
@@ -57,11 +57,3 @@ const points = [
 ]
 
 findClosestPair(points)
-
-// module.exports = {
-//     findClosestDistance,
-//     findClosestPair
-// }
-
-module.exports = findClosestDistance
-module.exports = findClosestPair
