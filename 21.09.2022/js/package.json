@@ -4,7 +4,7 @@
   "description": "Programming Lesson 21.09.22",
   "main": "main.js",
   "scripts": {
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,6 @@
   "homepage": "https://github.com/nadiein/programming-lessons#readme",
   "devDependencies": {
     "jest": "^29.0.1"
-  }
+  },
+  "type": "module"
 }
