@@ -25,6 +25,28 @@
 # D  E  F
 # G  H  I
 
+# length == 3 ---- E B A
+#                  E B C
+#                  E D A
+#                  E F C
+#                  E A B
+#                  E C B
+#                  E F B
+#                  E D B
+#                  E F I
+#                  E D G
+#                  E H G
+#                  E H I
+#                  E I F
+#                  E G D
+#                  E G H
+#                  E I H
+# length == 9 ---- A D G H E B C F I
+#                  A D G H I F C B E
+#                  A B C F E D G H I
+#                  A B C F I H E D G
+#                  A B C F I H G D E
+
 import cProfile
 from timeit import default_timer as t
 
@@ -33,7 +55,12 @@ def count_patterns_from(firstPoint, length) -> int:
         return 0
     grid = (('A', 'B', 'C'), ('D', 'E', 'F'), ('G', 'H', 'I'))
     res:int = 0
+    for index, item in enumerate(grid):
+        for sub_index, sub_item in enumerate(item):
+            print(item, sub_item)
     return res
+
+count_patterns_from('a', 10)
 
 if __name__ == '__main__':
     cProfile.run('count_patterns_from("a", 2)')
