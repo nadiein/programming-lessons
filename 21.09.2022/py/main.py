@@ -26,7 +26,7 @@ class WrongType(Exception):
 def find_distance(x1:int, y1:int, x2:int, y2:int) -> float:
     return round(sqrt((x2 - x1)**2 + (y2 - y1)**2), 1)
 
-def find_closest_pairs(points:tuple) -> tuple:
+def find_closest_pairs_one(points:tuple) -> tuple:
     if not isinstance(points, tuple):
         raise WrongType
 
