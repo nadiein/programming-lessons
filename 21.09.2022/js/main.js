@@ -12,12 +12,12 @@
 //   8    . B
 //   9                   . G
 
-
+/* Solution one */
 export const findClosestDistance = (x1, y1, x2, y2) => {
     return parseFloat(Math.sqrt( (x2 - x1)**2 + (y2 - y1)**2 ).toFixed(1))
 }
 
-export const findClosestPair = (points) => {
+export const findClosestPairOne = (points) => {
 
     const res = []
 
@@ -45,15 +45,24 @@ export const findClosestPair = (points) => {
 
     return [points[pointIndex], points[pointSubIndex]];
 }
+/* End Solution one */
 
-const points = [
-    [2,2], // A
-    [2,8], // B
-    [5,5], // C
-    [6,3], // D
-    [6,7], // E
-    [7,4], // F
-    [7,9]  // G
-]
 
-findClosestPair(points)
+/* Solution two */
+export const findClosestPairTwo = (points) => {
+    let closestPoints = null;
+    let closestDistance = Number.MAX_VALUE;
+
+    for (let i = 0; i < points.length; i++) {
+        for (let j = i + 1; j < points.length; j++) {
+            let distance = Math.hypot(points[i][0] - points[j][0], points[i][1] - points[j][1]);
+
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestPoints = [points[i], points[j]];
+            }
+        }
+    }
+
+    return closestPoints;
+}
