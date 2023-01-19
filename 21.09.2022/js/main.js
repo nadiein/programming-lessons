@@ -76,4 +76,5 @@ const points = [
     [7,9]  // G
 ]
 
-findClosestPair(points)
+findClosestPairOne(points)
+findClosestPairTwo(points)
