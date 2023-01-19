@@ -12,6 +12,7 @@
 #   8    . B
 #   9                   . G
 
+
 from math import sqrt
 import time
 from timeit import default_timer as timer
@@ -25,7 +26,7 @@ class WrongType(Exception):
 def find_distance(x1:int, y1:int, x2:int, y2:int) -> float:
     return round(sqrt((x2 - x1)**2 + (y2 - y1)**2), 1)
 
-def find_closest_pairs_one(points:tuple) -> tuple:
+def find_closest_pairs(points:tuple) -> tuple:
     if not isinstance(points, tuple):
         raise WrongType
 
@@ -103,5 +104,3 @@ if __name__ == '__main__':
 
     start_time = time.time()
     find_closest_pairs_two(points_two)
-    end_time = time.time()
-    print(end_time - start_time)

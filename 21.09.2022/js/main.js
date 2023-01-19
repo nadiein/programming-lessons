@@ -18,7 +18,6 @@ export const findClosestDistance = (x1, y1, x2, y2) => {
 }
 
 export const findClosestPairOne = (points) => {
-
     const res = []
 
     for (let i = 0; i < points.length; i++) {
@@ -66,3 +65,15 @@ export const findClosestPairTwo = (points) => {
 
     return closestPoints;
 }
+
+const points = [
+    [2,2], // A
+    [2,8], // B
+    [5,5], // C
+    [6,3], // D
+    [6,7], // E
+    [7,4], // F
+    [7,9]  // G
+]
+
+findClosestPair(points)
