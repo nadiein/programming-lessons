@@ -50,21 +50,44 @@
 import cProfile
 from timeit import default_timer as t
 
-def count_patterns_from(firstPoint, length) -> int:
-    if length > 9:
-        return 0
-    grid = (('A', 'B', 'C'), ('D', 'E', 'F'), ('G', 'H', 'I'))
-    res:int = 0
-    for index, item in enumerate(grid):
-        for sub_index, sub_item in enumerate(item):
-            print(item, sub_item)
-    return res
 
-count_patterns_from('a', 10)
+def count_patterns_from(firstPoint, length):
+    if length == 0:
+        return 0
+
+    if length == 1:
+        return 1
+
+    connections = {
+        'A':['B','D','E'],
+        'B':['A','C','D','E','F','I'],
+        'C':['B','D','E','F','H'],
+        'D':['A','B','C','E','G','H'],
+        'E':['A','B','C','D','F','G','H','I'],
+        'F':['B','C','E','G','H','I'],
+        'G':['D','E','F','H','I'],
+        'H':['C','D','E','F','G','I'],
+        'I':['B','E','F','G','H']
+    }
+
+    def dfs(point,length,visited):
+        if length == 0:
+            return 1
+        count = 0
+
+        for connection in connections[point]:
+            if connection not in visited:
+                count += dfs(connection,length-1,visited+[connection])
+
+        return count
+
+    return dfs(firstPoint,length-1,[firstPoint])
+
 
 if __name__ == '__main__':
     cProfile.run('count_patterns_from("a", 2)')
+
     start = t()
-    count_patterns_from('a', 10)
+    count_patterns_from('A', 10)
     end = t()
     print('profiler => ', end - start)
