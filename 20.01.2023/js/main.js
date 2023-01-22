@@ -10,10 +10,18 @@
 // An addition to this rule is that the minus sign (-) used for negating numbers and parentheses 
 // will never be separated by whitespace.
 
+// Steps:
+// 1. Check if there is only one digit in expression then return value
+// 2. Remove from the string spaces
+// 3. Define math operations
+// 4.
+
 /* Solution one */
 export const calc = (expression) => {
     // remove spaces from the input string
     expression = expression.replace(/\s/g, '');
+
+    if (expression.match(/^-?[0-9]+?$/g)) return Number(expression);
 
     const operators = {
         '+': (a, b) => a + b,
@@ -105,7 +113,7 @@ export const calc = (expression) => {
 // Operators are always evaluated from left-to-right, and * and / must be evaluated before + and -.
 // Need to support multiple levels of nested parentheses, ex. (2 / (2 + 3.33) * 4) - -6
 // Minus sign (-) used for negating numbers and parentheses will never be separated by whitespace.
-
+// handle mistakes in the input string
 
 // Test the last algorithm with these test cases. If one of them not equal to the value I put after == then fix algorithm until all test cases will be equal to the values I passed after symbol ==.
 //     '1+1' == 2
