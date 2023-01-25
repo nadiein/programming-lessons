@@ -14,7 +14,6 @@
 // 1. Check if there is only one digit in expression then return value
 // 2. Remove from the string spaces
 // 3. Define math operations
-// 4.
 
 /* Solution one */
 export const calc = (expression) => {
@@ -101,27 +100,3 @@ export const calc = (expression) => {
 
     return evaluatePostfix(postfix);
 }
-
-
-// Write algorithm using javascript that accept in parameter a mathematical expression as a string and returns the result as a number.
-// Numbers passed to the function may be both whole numbers and/or decimal numbers. Returned value also may be whole numbers and/or decimal numbers.
-//  Need to support the following mathematical operators:
-//     1. Multiplication *
-//     2. Division / (as floating point division)
-//     3. Addition +
-//     4. Subtraction -
-// Operators are always evaluated from left-to-right, and * and / must be evaluated before + and -.
-// Need to support multiple levels of nested parentheses, ex. (2 / (2 + 3.33) * 4) - -6
-// Minus sign (-) used for negating numbers and parentheses will never be separated by whitespace.
-// handle mistakes in the input string
-
-// Test the last algorithm with these test cases. If one of them not equal to the value I put after == then fix algorithm until all test cases will be equal to the values I passed after symbol ==.
-//     '1+1' == 2
-//     '1 - 1' == 0
-//     '1* 1' == 1
-//     '1 /1' == 1
-//     '-123' == -123
-//     '123' == 123
-//     '2 /2+3 * 4.75- -6' == 25
-//     '12* 123' == 1476
-//     '2 / (2 + 3) * 4.33 - -6' == 7.732
