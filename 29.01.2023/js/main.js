@@ -7,11 +7,60 @@
 
 /* Solution one */
 export class RomanNumerals {
-    static toRoman = (number) => {
-        return '';
+
+    static fromRoman = (str) => {
+        const map = {
+            I: 1,
+            V: 5,
+            X: 10,
+            L: 50,
+            C: 100,
+            D: 500,
+            M: 1000
+        };
+
+        let result = 0;
+
+        for ( let i = 0; i < str.length; i++ ) {
+            let current = map[str[i]];
+            let next = map[str[i + 1]];
+
+            if ( next > current ) {
+                result += next - current;
+                i++;
+            } else {
+                result += current;
+            }
+        }
+        return result;
     }
 
-    static fromRoman = (string) => {
-        return 0;
+    static toRoman = (num) => {
+        const map = [
+            { roman: 'M', value: 1000 },
+            { roman: 'CM', value: 900 },
+            { roman: 'D', value: 500 },
+            { roman: 'CD', value: 400 },
+            { roman: 'C', value: 100 },
+            { roman: 'XC', value: 90 },
+            { roman: 'L', value: 50 },
+            { roman: 'XL', value: 40 },
+            { roman: 'X', value: 10 },
+            { roman: 'IX', value: 9 },
+            { roman: 'V', value: 5 },
+            { roman: 'IV', value: 4 },
+            { roman: 'I', value: 1 }
+        ];
+
+        let result = '';
+
+        for ( const { roman, value } of map ) {
+
+            while ( num >= value ) {
+                result += roman;
+                num -= value;
+            }
+        }
+        return result;
     }
 }
