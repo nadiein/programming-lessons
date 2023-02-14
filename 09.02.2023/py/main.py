@@ -37,46 +37,42 @@ def get_pins(observed):
     adjacent_digits = {
         '0': ['0', '8'],
         '1': ['1', '2', '4'],
-        '2': ['2', '1', '3', '5'],
-        '3': ['3', '2', '6'],
-        '4': ['4', '1', '5', '7'],
-        '5': ['5', '2', '4', '6', '8'],
-        '6': ['6', '3', '5', '9'],
-        '7': ['7', '4', '8'],
-        '8': ['8', '5', '7', '9', '0'],
-        '9': ['9', '6', '8']
+        '2': ['1', '2', '3', '5'],
+        '3': ['2', '3', '6'],
+        '4': ['1', '4', '5', '7'],
+        '5': ['2', '4', '5', '6', '8'],
+        '6': ['3', '5', '6', '9'],
+        '7': ['4', '7', '8'],
+        '8': ['0', '5', '7', '8', '9'],
+        '9': ['6', '8', '9']
     }
 
-    variations = set([observed])
+    result = ['']
 
-    for i in range(len(observed)):
-        adjacents = adjacent_digits[observed[i]]
+    for digit in observed:
+        result = [prev + next for prev in result for next in adjacent_digits[digit]]
 
-        for adjacent in adjacents:
-            variation = observed[:i] + adjacent + observed[i+1:]
-            variations.add(variation)
-
-            if len(variation) < len(observed):
-                variations |= getPINs(variation)
-
-    return sorted(list(variations))
+    return sorted(result)
 
 
-puzzle = [[5,3,0,0,7,0,0,0,0],
-          [6,0,0,1,9,5,0,0,0],
-          [0,9,8,0,0,0,0,6,0],
-          [8,0,0,0,6,0,0,0,3],
-          [4,0,0,8,0,3,0,0,1],
-          [7,0,0,0,2,0,0,0,6],
-          [0,6,0,0,0,0,2,8,0],
-          [0,0,0,4,1,9,0,0,5],
-          [0,0,0,0,8,0,0,7,9]]
+case = [
+    '339', '366', '399', '658',
+    '636', '258', '268', '669',
+    '668', '266', '369', '398',
+    '256', '296', '259', '368',
+    '638', '396', '238', '356',
+    '659', '639', '666', '359',
+    '336', '299', '338', '696',
+    '269', '358', '656', '698',
+    '699', '298', '236', '239'
+]
 
 
 if __name__ == '__main__':
-    cProfile.run('sudoku(puzzle)')
+    cProfile.run('get_pins(case)')
 
     start_time = time.time()
-    sudoku(puzzle)
+    get_pins(case)
     end_time = time.time()
+
     print('', end_time - start_time)
