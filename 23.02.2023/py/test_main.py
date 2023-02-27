@@ -2,17 +2,15 @@ import main
 
 
 # First approach
-def test_fib():
+def test_traverse_TCP_states():
     test_cases = (
-        (0, 0),
-        (1, 1),
-        (2, 1),
-        (3, 2),
-        (4, 3),
-        (5, 5),
-        (1000, 43466557686937456435688527675040625802564660517371780402481729089536555417949051890403879840079255169295922593080322634775209689623239873322471161642996440906533187938298969649928516003704476137795166849228875)
+        (['APP_ACTIVE_OPEN','RCV_SYN_ACK','RCV_FIN'], 'CLOSE_WAIT'),
+        (['APP_PASSIVE_OPEN',  'RCV_SYN','RCV_ACK'], 'ESTABLISHED'),
+        (['APP_ACTIVE_OPEN','RCV_SYN_ACK','RCV_FIN','APP_CLOSE'], 'LAST_ACK'),
+        (['APP_ACTIVE_OPEN'], 'SYN_SENT'),
+        (['APP_PASSIVE_OPEN','RCV_SYN','RCV_ACK','APP_CLOSE','APP_SEND']), 'ERROR')
     )
 
     for x, y in test_cases:
         # First approach
-        assert main.fib(x) == y
+        assert main.traverse_TCP_states(x) == y
