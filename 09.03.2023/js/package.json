@@ -1,0 +1,24 @@
+{
+    "name": "programming-lesson",
+    "version": "1.0.0",
+    "description": "Programming Lesson 09.03.23",
+    "main": "main.js",
+    "scripts": {
+      "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/nadiein/programming-lessons.git"
+    },
+    "author": "nadiein",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/nadiein/programming-lessons/issues"
+    },
+    "homepage": "https://github.com/nadiein/programming-lessons#readme",
+    "devDependencies": {
+      "jest": "^29.0.1"
+    },
+    "type": "module"
+  }
+  
